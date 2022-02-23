@@ -20,8 +20,9 @@ class Nz_citizenship_eligibility_checker(hass.Hass):
         try:
             self.run_daily(
                 self.stream,
-                time(9, 0, 0),
-                immediate=True
+                time(10, 0, 0),
+                #time(16, 0, 0),
+                #time(9, 0, 0),
             )
 
         except Exception as e:
@@ -82,7 +83,7 @@ class Nz_citizenship_eligibility_checker(hass.Hass):
             s = self.response(id_)
             j = s.json()
             
-            message = f"{j['statusCode']} {j['familyName']} {j['isEligible']} {j['message']}"
+            message = f"{j['statusCode']} {id_['givenName']} {id_['familyName']} {j['message']}"
 
             self.log(message)
 
