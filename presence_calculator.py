@@ -70,6 +70,7 @@ class Presence_calculator(hass.Hass):
         
     def send_email_to(self, title='rickhehe', message=''):
         
+        # This is an existing service defined in **configuration.ymal**.
         self.call_service(
             'notify/send_email_to_rick_notifier',
             message=message,
